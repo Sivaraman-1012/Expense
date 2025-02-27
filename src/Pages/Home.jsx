@@ -252,7 +252,7 @@ const Home = () => {
                 {expenses.map((expense) => (
                   <tr key={expense.id}>
                     <td>{expense.description}</td>
-                    <td>${expense.amount.toFixed(2)}</td>
+                    <td>Rs.{expense.amount.toFixed(2)}</td>
                     <td>{expense.paidBy}</td>
                     <td>{expense.splitWith.join(', ')}</td>
                     <td>
@@ -384,10 +384,11 @@ const Home = () => {
                   <div className="person-name">{person}</div>
                   <div className="balance-amount">
                     {balance > 0 
-                      ? `Gets back $${balance.toFixed(2)}`
-                      : balance < 0 }
-                        ? `Owes $${Math.abs(balance).toFixed(2)} `
+                      ? `Gets back Rs.${balance.toFixed(2)}`
+                      : balance < 0 
+                        ? `Owes Rs.${Math.abs(balance).toFixed(2)}`
                         : `All settled up`
+                  }
                   </div>
                 </div>
               ))}
@@ -401,7 +402,7 @@ const Home = () => {
               <ul className="settlement-list">
                 {settlements.map((settlement, index) => (
                   <li key={index} className="settlement-item">
-                    <span className="debtor">{settlement.from}</span> pays <span className="creditor">{settlement.to}</span> <span className="amount">${settlement.amount.toFixed(2)}</span>
+                    <span className="debtor">{settlement.from}</span> pays <span className="creditor">{settlement.to}</span> <span className="amount">Rs.{settlement.amount.toFixed(2)}</span>
                   </li>
                 ))}
               </ul>
